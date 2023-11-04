@@ -48,6 +48,9 @@ pnpm install
 Use `packages/example-package` as a template:
 ```
 cp -r packages/example-package packages/<package-name>
+
+cp -r packages/example-package packages/indexer
+
 ```
 - Update `package.json` name to `@dydxprotocol-indexer/<package-name>`, update the `README.md`, and run `pnpm i` to install dependencies.
 - Add in `Dockerfile.service.local`, `Dockerfile.service.remote`, and `Dockerfile.postgres-package.local` to copy the `package.json` file and `build/` files.
