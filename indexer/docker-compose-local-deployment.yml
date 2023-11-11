@@ -30,7 +30,7 @@ services:
     build:
       dockerfile: Dockerfile.postgres.local
     ports:
-      - 5435:5432
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: dydxserver123
       POSTGRES_USER: dydx_dev
@@ -48,7 +48,7 @@ services:
   redis:
     image: redis:5.0.6-alpine
     ports:
-      - 6382:6379
+      - 6379:6379
     labels:
       com.datadoghq.ad.logs: '[{"source": "indexer", "service": "redis"}]'
       com.datadoghq.ad.check_names: '["redisdb"]'
@@ -97,6 +97,7 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_ENV=localnet_${USER}
       - DD_AGENT_HOST=datadog-agent
+      - REDIS_URL=redis://redis:6379
     labels:
       com.datadoghq.ad.logs: '[{"source": "indexer", "service": "ender"}]'
     depends_on:
@@ -116,8 +117,9 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_ENV=localnet_${USER}
       - DD_AGENT_HOST=datadog-agent
-      - TENDERMINT_WS_URL=host.docker.internal:26657 # connects to localhost:26657 on host machine
+      - TENDERMINT_WS_URL=172.31.7.55:26657 # connects to localhost:26657 on host machine
       - PORT=3002
+      - RATE_LIMIT_REDIS_URL=redis://redis:6379
     labels:
       com.datadoghq.ad.logs: '[{"source": "indexer", "service": "comlink"}]'
     ports:
@@ -166,6 +168,12 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_ENV=localnet_${USER}
       - DD_AGENT_HOST=datadog-agent
+      - AWS_ACCOUNT_ID="wade aws account"
+      - AWS_REGION="USA"
+      - S3_BUCKET_ARN="123456"
+      - ECS_TASK_ROLE_ARN="123456"
+      - KMS_KEY_ARN="123456"
+      - RDS_INSTANCE_NAME="redis"
     labels:
       com.datadoghq.ad.logs: '[{"source": "indexer", "service": "roundtable"}]'
     depends_on:

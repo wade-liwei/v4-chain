@@ -24,14 +24,14 @@ export function rejectRestrictedCountries(
     return next();
   }
 
-  if (isRestrictedCountryHeaders(req.headers as CountryHeaders)) {
-    return create4xxResponse(
-      res,
-      INDEXER_GEOBLOCKED_PAYLOAD,
-      403,
-      { code: BlockedCode.GEOBLOCKED },
-    );
-  }
+  // if (isRestrictedCountryHeaders(req.headers as CountryHeaders)) {
+  //   return create4xxResponse(
+  //     res,
+  //     INDEXER_GEOBLOCKED_PAYLOAD,
+  //     403,
+  //     { code: BlockedCode.GEOBLOCKED },
+  //   );
+  // }
 
   return next();
 }

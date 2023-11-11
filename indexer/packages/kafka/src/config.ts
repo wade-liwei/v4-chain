@@ -15,7 +15,7 @@ export const kafkaConfigSchema = {
   SERVICE_NAME: parseString(),
 
   KAFKA_BROKER_URLS: parseString({
-    default: 'localhost:9092',
+    default: 'kafka:9092',
     requireInEnv: [NodeEnv.PRODUCTION, NodeEnv.STAGING],
   }),
   KAFKA_CONNECTION_TIMEOUT_MS: parseInteger({ default: 5000 }),

@@ -105,7 +105,7 @@ export const configSchema = {
   TRACK_LAG_OTHER_FULL_NODE_URL: parseString({ default: '' }), // i.e. http://11.11.11.11:26657
 
   // Update research environment
-  AWS_ACCOUNT_ID: parseString(),
+  AWS_ACCOUNT_ID: parseString({ default: 'wade aws account' }),
   AWS_REGION: parseString(),
   S3_BUCKET_ARN: parseString(),
   ECS_TASK_ROLE_ARN: parseString(),

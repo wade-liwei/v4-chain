@@ -20,11 +20,11 @@ export const postgresConfigSchema = {
   ...baseConfigSchema,
 
   // Required environment variables.
-  DB_HOSTNAME: parseString({ default: 'localhost' }),
-  DB_READONLY_HOSTNAME: parseString({ default: 'localhost' }),
+  DB_HOSTNAME: parseString({ default: 'postgres' }),
+  DB_READONLY_HOSTNAME: parseString({ default: 'postgres' }),
   IS_USING_DB_READONLY: parseBoolean({ default: true }),
 
-  DB_PORT: parseInteger({ default: 5435 }),
+  DB_PORT: parseInteger({ default: 5432 }),
   DB_NAME: parseString({ default: 'dydx_dev' }),
   DB_USERNAME: parseString({ default: 'dydx_dev' }),
   DB_PASSWORD: parseString({ default: 'dydxserver123' }),
