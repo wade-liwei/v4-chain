@@ -1,0 +1,483 @@
+    1  make  localnet-compose-upd
+    2  sudo apt install make   
+    3  make  localnet-compose-upd
+    4  sudo usermod -aG docker${USER}
+    5  sudo usermod -aG docker ${USER}
+    6  exit
+    7  # Add Docker's official GPG key:
+    8  sudo apt-get update
+    9  sudo apt-get install ca-certificates curl gnupg
+   10  sudo install -m 0755 -d /etc/apt/keyrings
+   11  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   12  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   13  # Add the repository to Apt sources:
+   14  echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   15    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   16  sudo apt-get update
+   17  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   18  sudo docker run hello-world
+   19  ls
+   20  wget https://go.dev/dl/go1.21.4.linux-amd64.tar.gz
+   21  $ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
+   22  sudo  rm -rf /usr/local/go &&sudo  tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
+   23  ls
+   24  vi .bashrc 
+   25  sudo apt install curl 
+   26  curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+   27  source ~/.bashrc   
+   28  ls
+   29  git clone git@github.com:dydxprotocol/v4-chain.git
+   30  ls
+   31  git clone https://github.com/dydxprotocol/v4-chain.git
+   32  ls
+   33  cd  v4-chain/
+   34  ls
+   35  cd protocol/
+   36  ls
+   37  git chekcout  Protocol v1.0.1
+   38  git checkout  Protocol v1.0.1
+   39  git tag 
+   40  git config --global --add tag.sort -taggerdate
+   41  git tag 
+   42  git checkout protocol/v1.0.1
+   43  ls
+   44  vi  Makefile 
+   45  screen -S protocol
+   46  exit
+   47  docker container ls 
+   48  screen -ls
+   49  screen -S protocol
+   50  ls
+   51  cd  v4-chain/
+   52  ls
+   53  git log 
+   54  ls
+   55  screen -r  protocol
+   56  top
+   57  docker container ls 
+   58  docker exec -it indexer-comlink-1 ./bin/sh 
+   59  docker exec -it indexer-comlink-1 /bin/sh 
+   60  cd v4-chain/
+   61  ls
+   62  cd indexer/
+   63  ls
+   64  grep  "5435"   * -rn 
+   65  cd  v4-chain/
+   66  ls
+   67  cd  indexer/
+   68  ls
+   69  git log 
+   70  git tag 
+   71  qls
+   72  ls
+   73  pnpm run migrate
+   74  cd services/
+   75  ls
+   76  cd  ..
+   77  ls
+   78  cd  packages/
+   79  ls
+   80  cd  postgres/
+   81  ls
+   82  pnpm run migrate
+   83  cd ../../../
+   84  ls
+   85  cd indexer/
+   86  ls
+   87  docker compose -f  docker-compose-local-deployment.yml  up 
+   88  ls
+   89  vi  Dockerfile.postgres-package.local 
+   90  docker compose -f  docker-compose-local-deployment.yml  up 
+   91  docker compose -f  docker-compose-local-deployment.yml  up  --force-recreate
+   92  docker compose -f  docker-compose-local-deployment.yml  up 
+   93  docker image ls 
+   94  docker image  rm  indexer*
+   95  docker image  rm  9013e7837eec e7689316eb77 4eaa52f82c19 72868d66c17b 67e28b55b6da ddd4dd9e2fcc b67a59b65234 
+   96  docker compose -f docker-compose-local-deployment.yml down 
+   97  docker image  rm  9013e7837eec e7689316eb77 4eaa52f82c19 72868d66c17b 67e28b55b6da ddd4dd9e2fcc b67a59b65234 
+   98  docker image ls 
+   99  ls
+  100  pnpm run build:all
+  101  ls
+  102  cd  packages/
+  103  ls
+  104  cd ..
+  105  ls
+  106  cd  services/
+  107  ls
+  108  cd ..
+  109  ls
+  110  cd  packages/
+  111  ls
+  112  cd  postgres/
+  113  ls
+  114  cd build/
+  115  ls
+  116  cd src/
+  117  ls
+  118  cd ..
+  119  ls
+  120  cd ..
+  121  ls
+  122  cd ..
+  123  ls
+  124  cd postgres/
+  125  ls
+  126  vi package.json 
+  127  docker iamge ls
+  128  docker image ls 
+  129  cd ..
+  130  ls
+  131  cd ..
+  132  ls
+  133  docker compose  -f docker-compose-local-deployment.yml up 
+  134  ls
+  135  cd packages/
+  136  ls
+  137  cd  postgres/
+  138  ls
+  139  cd ../../
+  140  ls
+  141  vi  Dockerfile.postgres-package.local  
+  142  docker compose  -f docker-compose-local-deployment.yml up
+  143  ls
+  144  vi  Dockerfile.postgres-package.local  
+  145  docker compose  -f docker-compose-local-deployment.yml up
+  146  vi  Dockerfile.postgres-package.local  
+  147  docker compose  -f docker-compose-local-deployment.yml up
+  148  ls
+  149  grep  "--frozen-lockfile"  *.local -rn 
+  150  ls
+  151  grep  "--loglevel warn"  Dockerfile.* -rn 
+  152  ls
+  153  vi Dockerfile.service.local  
+  154  docker compose  -f docker-compose-local-deployment.yml up
+  155  vi Dockerfile.service.local  
+  156  docker compose  -f docker-compose-local-deployment.yml up
+  157  pnpm install
+  158  git status
+  159  git chekcout  -- ./
+  160  git checkout  -- ./
+  161  git status
+  162  docker compose  -f docker-compose-local-deployment.yml up
+  163  ls
+  164  vi  Dockerfile.postgres-package.local 
+  165  ls
+  166  vi Dockerfile.service.local 
+  167  ls
+  168  lsdocker compose  -f docker-compose-local-deployment.yml up
+  169  docker compose  -f docker-compose-local-deployment.yml up
+  170  ls
+  171  vi  Dockerfile.postgres-package.local  
+  172  docker compose  -f docker-compose-local-deployment.yml up
+  173  docker compose  -f docker-compose-local-deployment.yml up --force-recreate
+  174  docker image ls 
+  175  docker image  rm 9013e7837eec e7689316eb77  ddd4dd9e2fcc 
+  176  ls
+  177  docker compose  -f  docker-compose-local-deployment.yml  down 
+  178  docker image  rm  ddd4dd9e2fcc
+  179  docker compose  -f  docker-compose-local-deployment.yml   up 
+  180  vi  Dockerfile.postgres-package.local  
+  181  docker compose  -f  docker-compose-local-deployment.yml   up 
+  182  vi  Dockerfile.postgres-package.local  
+  183  docker compose  -f  docker-compose-local-deployment.yml   up 
+  184  vi  Dockerfile.postgres-package.local  
+  185  docker compose  -f  docker-compose-local-deployment.yml   up 
+  186  vi  Dockerfile.postgres-package.local  
+  187  docker compose  -f  docker-compose-local-deployment.yml   up 
+  188  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  189  ls
+  190  vi docker-compose-local-deployment.yml 
+  191  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  192  ls
+  193  cd  services/
+  194  ls
+  195  cd ender/
+  196  ls
+  197  grep  "localhost"  * -rn 
+  198  cd ../
+  199  grep  "localhost"  * -rn 
+  200  cd ..
+  201  ls
+  202  vi  docker-compose-local-deployment.yml 
+  203  ls
+  204  cd  services/
+  205  ls
+  206  cd ender/
+  207  ls
+  208  grep  "REDIS_URL"  * -rn 
+  209  cd ../../
+  210  ls
+  211  vi  docker-compose-local-deployment.yml 
+  212  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  213  ls
+  214  vi docker-compose-local-deployment.yml 
+  215  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  216  ls
+  217  ifconfig
+  218  sudo apt install net-tools
+  219  ifconfig
+  220  vi docker-compose-local-deployment.yml 
+  221  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  222  vi docker-compose-local-deployment.yml 
+  223  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  224  docker compose  -f  docker-compose-local-deployment.yml  down 
+  225  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  226  ls
+  227  vi   docker-compose-local-deployment.yml 
+  228  docker compose  -f  docker-compose-local-deployment.yml   down 
+  229  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  230  ifconfig
+  231  vi   docker-compose-local-deployment.yml 
+  232  docker compose  -f  docker-compose-local-deployment.yml   down 
+  233  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  234  vi   docker-compose-local-deployment.yml 
+  235  ls
+  236  ifconfig
+  237  ls
+  238  cd  services/
+  239  ls
+  240  cd  comlink/
+  241  ls
+  242  cd src
+  243  ls
+  244  vi config.ts 
+  245  ls
+  246  cd ../../
+  247  ls
+  248  cd ..
+  249  ls
+  250  docker  image ls 
+  251  docker image rm  9013e7837eec
+  252  docker compose  -f docker-compose-local-deployment.yml down 
+  253  docker image rm  9013e7837eec
+  254  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  255  ls
+  256  vi docker-compose-local-deployment.yml 
+  257  docker image ls 
+  258  ls
+  259  docker compose -f     docker-compose-local-deployment.yml down 
+  260  docker image ls 
+  261  docker image rm  db5ef427fca9 v 4eaa52f82c19 72868d66c17b e7689316eb77 e7689316eb77
+  262  ls
+  263  vi    docker-compose-local-deployment.yml
+  264  docker compose -f     docker-compose-local-deployment.yml down 
+  265  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  266  ls
+  267  pnpm run build:all
+  268  docker image ls 
+  269  docker image  rm db5ef427fca9
+  270  docker  compose -f docker-compose-local-deployment.yml down 
+  271  docker image  rm db5ef427fca9
+  272  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  273  ls
+  274  vi  docker-compose-local-deployment.yml 
+  275  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  276  vi  docker-compose-local-deployment.yml 
+  277  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  278  ls
+  279  cd services/
+  280  ls
+  281  cd  comlink/
+  282  ls
+  283  cd src
+  284  ls
+  285  vi config.ts 
+  286  docker image ls 
+  287  docker image  rm  db5ef427fca9
+  288  ls
+  289  cd ../../../
+  290  ls
+  291  docker compose -f  docker-compose-local-deployment.yml  down 
+  292  docker image ls 
+  293  docker image rm  db5ef427fca9
+  294  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  295  docker image ls 
+  296  docker compose -f  docker-compose-local-deployment.yml  dow
+  297  docker compose -f  docker-compose-local-deployment.yml  down
+  298  docker image ls
+  299  docker image  db5ef427fca9 
+  300  docker image rm db5ef427fca9
+  301  pnpm run build:all
+  302  ls
+  303  cd services/
+  304  ls
+  305  cd    ../packages/
+  306  ls
+  307  cd redis/
+  308  ls
+  309  cd src/
+  310  ls
+  311  vi config.ts 
+  312  cd ../../../
+  313  ls
+  314  pnpm run build:all
+  315  docker iamge ls
+  316  docker image ls 
+  317  docker image rm  9013e7837eec 4eaa52f82c19 72868d66c17b e7689316eb77 67e28b55b6da b67a59b65234
+  318  docker image ls 
+  319  ls
+  320  docker   compose  -f docker-compose-local-deployment.yml  up 
+  321  ls
+  322  vi docker-compose-local-deployment.yml 
+  323  docker   compose  -f docker-compose-local-deployment.yml  up 
+  324  docker   compose  -f docker-compose-local-deployment.yml   down 
+  325  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  326  vi docker-compose-local-deployment.yml 
+  327  ifconfig
+  328  vi docker-compose-local-deployment.yml 
+  329  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  330  ls
+  331  cd  services/
+  332  ls
+  333  cd vulcan/
+  334  ls
+  335  grep  "5435"  * -rn 
+  336  cd ../
+  337  ls
+  338  cd ..
+  339  ls
+  340  cd packages/
+  341  ls
+  342  cd postgres/
+  343  ls
+  344  grep  "5435"  * -rn 
+  345  vi src/config.ts 
+  346  cd ../../
+  347  ls
+  348  docker compose  -f  docker-compose-local-deployment.yml  down 
+  349  docker image ls 
+  350  docker image  rm  indexer-vulcan 
+  351  pnpm run build:all
+  352  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  353  ls
+  354  cd  services/
+  355  ls
+  356  cd  ..
+  357  ls
+  358  cd  packages/
+  359  ls
+  360  cd postgres/
+  361  ls
+  362  cd src
+  363  ls
+  364  vi config.ts 
+  365  cd ../../../
+  366  lks
+  367  ls
+  368  pnpm run build:all
+  369  docker iamge ls 
+  370  docker image ls 
+  371  docker image  rm  5f374beef3e7
+  372  docker compose -f docker-compose-local-deployment.yml down 
+  373  docker image  rm  5f374beef3e7
+  374  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  375  ls
+  376  cd  packages/
+  377  ls
+  378  cd  kafka/
+  379  ls
+  380  cd src/
+  381  ls
+  382  vi config.ts 
+  383  cd ../../../
+  384  ls
+  385  pnpm run build:all
+  386  docker iamge ls 
+  387  docker image ls 
+  388  ls
+  389  docker compose  -f docker-compose-local-deployment.yml  down 
+  390  docker image  rm  92175e630cad 5b2d14d73a68 7fc6081163b4 7fc6081163b4 7fc6081163b4 e5b165e65d7f 4c87a3991602 db5ef427fca9 b67a59b65234
+  391  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  392  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate  -d
+  393  docker logs -f indexer-roundtable-1  
+  394  cd services/
+  395  ls
+  396  cd  roundtable/
+  397  ls
+  398  grep  "AWS_ACCOUNT_ID"  * -rn 
+  399  ls
+  400  cd  src
+  401  ls
+  402  vi config.ts 
+  403  cd ../../../
+  404  ls
+  405  pnpm run build:all
+  406  ls
+  407  docker compose -f  docker-compose-local-deployment.yml  down 
+  408  history  | grep compose 
+  409  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate 
+  410  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate  -d
+  411  docker logs -f  indexer-roundtable-1 
+  412  docker image ls 
+  413  docker image rm  0c5aac9ed308
+  414  docker    compose  -f docker-compose-local-deployment.yml down 
+  415  docker image rm  0c5aac9ed308
+  416  pnpm run build:all
+  417  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate  -d
+  418  docker logs -f indexer-roundtable-1
+  419  docker compose  -f  docker-compose-local-deployment.yml  down 
+  420  docker compose  -f  docker-compose-local-deployment.yml   up  --force-recreate  -d
+  421  docker logs -f indexer-roundtable-1
+  422  docker container ls 
+  423  docker logs -f indexer-postgres-package-1
+  424  ls
+  425  cd  v4-chain/
+  426  ls
+  427  cd  indexer/
+  428  ls
+  429  vi  docker-compose-local-deployment.yml 
+  430  top 
+  431  df -h 
+  432  top 
+  433  curl http://localhost:3002/v4/trades/perpetualMarket/BTC-USD
+  434  npm install -g wscat
+  435  wscli connect http://localhost:3003
+  436  sudo apt-get install wscli
+  437  wscli connect http://localhost:3003
+  438  npm install -g  wscli
+  439  wscli connect http://localhost:3003
+  440  wscli connect ws://localhost:3003
+  441  wscli  ws://localhost:3003
+  442  wscli http://localhost:3003
+  443  ls
+  444  cd  vr
+  445  cd v4-chain/
+  446  ls
+  447  git remote add origin  
+  448  git status
+  449  git add ./
+  450  git commit  -m "fix indexer run"
+  451  git remote add  self https://github.com/wade-liwei/v4-chain.git
+  452  git status
+  453  git log 
+  454  ls
+  455  git push self 
+  456  git log 
+  457  git push self 2f128b903fad6415b1a1530f4c054f8cd8a6bba8
+  458  git remote add  self  git@github.com:wade-liwei/v4-chain.git
+  459  git remote add  selfgit   git@github.com:wade-liwei/v4-chain.git
+  460  git push selfgit  2f128b903fad6415b1a1530f4c054f8cd8a6bba8
+  461  cd ..
+  462  ls
+  463  ssh-keygen 
+  464  cat .ssh/id_rsa.pub
+  465  ls
+  466  cd  v4-chain/
+  467  ls
+  468  cd  
+  469  cd  v4-chain/
+  470  ls
+  471  git push 
+  472  git checkout -b 2311111
+  473  git log 
+  474  ls
+  475  git branch -a
+  476  git push selfgit   2311111
+  477  cd ..
+  478  ls
+  479  history  
+  480  ls
+  481  cd  v4-chain/
+  482  ls
+  483  history    > cmd.231111
