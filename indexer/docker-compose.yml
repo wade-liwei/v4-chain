@@ -6,7 +6,7 @@ services:
       - 9092:9092
     environment:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_HOST_NAME: 172.31.19.103 
       KAFKA_CREATE_TOPICS: 
         "to-ender:1:1,\
         to-vulcan:1:1,\
@@ -15,25 +15,115 @@ services:
         to-websockets-trades:1:1,\
         to-websockets-markets:1:1,\
         to-websockets-candles:1:1"
-  postgres-test:
-    build:
-      dockerfile: Dockerfile.postgres.local
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics.sh --bootstrap-server 127.0.0.1:9092 --topic to-websockets-candles --describe"]
+      interval: 5s
+      timeout: 20s
+      retries: 50
+      
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
     ports:
-      - 5436:5432
+      - 8080:8080
     environment:
-      POSTGRES_PASSWORD: dydxserver123
-      POSTGRES_USER: dydx_test
-      DATADOG_POSTGRES_PASSWORD: dydxserver123
+      - KAFKA_CLUSTERS_0_NAME=kafka
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
   postgres:
     build:
       dockerfile: Dockerfile.postgres.local
     ports:
-      - 5435:5432
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: dydxserver123
       POSTGRES_USER: dydx_dev
       DATADOG_POSTGRES_PASSWORD: dydxserver123
+      PGDATA: /data/postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dydx_dev"]
+      interval: 5s
+      timeout: 20s
+      retries: 10
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      # The local folder owner and group must be set to 5050
+      # for the volume to work. Otherwise pgadmin is not able to
+      # write to the local folder
+      # sudo chown -R 5050:5050 pgadmin_data
+      - ./pgadmin_data:/var/lib/pgadmin
+    ports:
+      - 5050:80
+    restart: unless-stopped
   redis:
-    image: redis:5.0.6-alpine
+    image: redis/redis-stack:latest
     ports:
       - 6382:6379
+      - 8001:8001
+  ###########################################   
+  
+  postgres-package:
+    build:
+      dockerfile: Dockerfile.postgres-package.local
+    links:
+      - postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+#####################################
+
+  ender:
+    build:
+      dockerfile: Dockerfile.service.local
+      args:
+        service: ender
+    ports:
+      - 3001:3001
+    links:
+      - postgres
+    environment:
+      # See https://docs.datadoghq.com/profiler/enabling/nodejs/ for DD_ specific environment variables.
+      # Note that DD_SERVICE and DD_VERSION are read by default from package.json
+      # - DD_PROFILING_ENABLED=true
+      # - DD_ENV=localnet_${USER}
+      # - DD_AGENT_HOST=datadog-agent
+      - REDIS_URL=redis://redis:6379
+      - DB_HOSTNAME=postgres
+      - DB_READONLY_HOSTNAME=postgres
+      - KAFKA_BROKER_URLS=kafka:9092
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "indexer", "service": "ender"}]'
+    depends_on:
+      kafka:
+        condition: service_healthy
+      postgres-package:
+        condition: service_completed_successfully
+  #######################################################
+  # datadog-agent:
+  #   build: datadog
+  #   links:
+  #     - redis
+  #     # - vulcan
+  #     # - comlink
+  #     - ender
+  #   environment:
+  #     - DD_API_KEY=${DD_API_KEY}
+  #     - DD_LOGS_ENABLED=true
+  #     - DD_TAGS="service:local-indexer dev:${USER}"
+  #     - DD_APM_ENABLED=true
+  #     - DD_APM_NON_LOCAL_TRAFFIC=true
+  #     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - /proc/:/host/proc/:ro
+  #     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+  #     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #   profiles: ["export-to-datadog"]
+
+
