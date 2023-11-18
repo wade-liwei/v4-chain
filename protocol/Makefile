@@ -366,22 +366,22 @@ localnet-init:
 localnet-compose-up:
 	@echo "Launching localnet at commit ${GIT_COMMIT_HASH}"
 	@docker build . -t local:dydxprotocol -f testing/testnet-local/Dockerfile --no-cache
-	@docker-compose -f docker-compose.yml up --force-recreate $(ARGS)
+	@docker compose -f docker-compose.yml up --force-recreate $(ARGS)
 
 localnet-compose-upd:
 	@echo "Launching localnet at commit ${GIT_COMMIT_HASH}"
 	@docker build . -t local:dydxprotocol -f testing/testnet-local/Dockerfile --no-cache
-	@docker-compose -f docker-compose.yml up --force-recreate -d $(ARGS)
+	@docker compose -f docker-compose.yml up --force-recreate -d $(ARGS)
 
 localnet-start: localnet-init localnet-compose-up
 localnet-startd: localnet-init localnet-compose-upd
 
 # Continue the localnet with the same chain state.
 localnet-continue:
-	@docker-compose -f docker-compose.yml up $(ARGS)
+	@docker compose -f docker-compose.yml up $(ARGS)
 
 localnet-stop:
-	@docker-compose -f docker-compose.yml down
+	@docker compose -f docker-compose.yml down
 
 .PHONY: all build-linux install format lint \
 	go-mod-cache draw-deps clean build build-contract-tests-hooks \
