@@ -378,7 +378,7 @@ localnet-startd: localnet-init localnet-compose-upd
 
 # Continue the localnet with the same chain state.
 localnet-continue:
-	@docker compose -f docker-compose.yml up $(ARGS)
+	@docker compose -f docker-compose.yml up -d $(ARGS)
 
 localnet-stop:
 	@docker compose -f docker-compose.yml down
