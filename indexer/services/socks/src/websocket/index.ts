@@ -100,9 +100,9 @@ export class Index {
    */
   private onConnection(ws: WebSocket, req: IncomingMessage): void {
     // Terminate the connection if the connection requestion originated from a restricted country
-    if (this.countryRestrictor.isRestrictedCountry(req)) {
-      return ws.terminate();
-    }
+    //if (this.countryRestrictor.isRestrictedCountry(req)) {
+    //  return ws.terminate();
+    //}
 
     const connectionId: string = uuidv4();
 
