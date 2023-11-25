@@ -7,10 +7,12 @@ services:
       - cosmovisor
       - run
       - start
-      - --log_level
+      - --log_level       
       # Note that only this validator has a log-level of `info`; other validators use `error` by default.
       # Change to `debug` for more verbose log-level.
       - info 
+      - --indexer-kafka-conn-str
+      - ${LOCAL_IP}:9092
       - --home
       - /dydxprotocol/chain/.alice
       - --p2p.persistent_peers 
